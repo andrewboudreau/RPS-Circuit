@@ -1,6 +1,31 @@
 # RPS-Circuit
 A rock paper scissor digital circuit
 
+
+https://chat.openai.com/share/e1661239-cbc7-4bde-933a-885e609e13d1
+
+### Symbolic Notation for Inputs and Outputs:
+
+- \( U_1U_0 \) : User Choice (2 bits)
+- \( C_1C_0 \) : CPU Choice (2 bits)
+- \( W \) : Win LED (1 bit)
+- \( L \) : Loss LED (1 bit)
+
+### Game Logic:
+
+Here are the game rules as Boolean expressions. We'll consider a Win or Loss from the perspective of the user.
+
+1. **User Wins** (Green LED): \( W \)
+    - Rock beats Scissors: \( U_1U_0 = 00, C_1C_0 = 10 \) : \( W_1 = \overline{U_1} \overline{U_0} C_1 \overline{C_0} \)
+    - Paper beats Rock: \( U_1U_0 = 01, C_1C_0 = 00 \) : \( W_2 = \overline{U_1} U_0 \overline{C_1} \overline{C_0} \)
+    - Scissors beat Paper: \( U_1U_0 = 10, C_1C_0 = 01 \) : \( W_3 = U_1 \overline{U_0} \overline{C_1} C_0 \)
+
+    The full expression for a win is:
+    \[ W = W_1 + W_2 + W_3 \]
+
+2. **User Loses** (Red LED): \( L \)
+    - The loss conditions are simply the inverses of the win conditions. We can use the NOT operation on the \( W \) bit for this.
+
 # Truth Table for Rock-Paper-Scissors 🎮
 - **Rock 🪨**: 00
 - **Paper 📄**: 01
@@ -34,30 +59,6 @@ assign w3 = player[1] & ~player[0] & ~computer[1] & computer[0];
 assign win = w1 | w2 | w3;
 
 ```
-
-https://chat.openai.com/share/e1661239-cbc7-4bde-933a-885e609e13d1
-
-### Symbolic Notation for Inputs and Outputs:
-
-- \( U_1U_0 \) : User Choice (2 bits)
-- \( C_1C_0 \) : CPU Choice (2 bits)
-- \( W \) : Win LED (1 bit)
-- \( L \) : Loss LED (1 bit)
-
-### Game Logic:
-
-Here are the game rules as Boolean expressions. We'll consider a Win or Loss from the perspective of the user.
-
-1. **User Wins** (Green LED): \( W \)
-    - Rock beats Scissors: \( U_1U_0 = 00, C_1C_0 = 10 \) : \( W_1 = \overline{U_1} \overline{U_0} C_1 \overline{C_0} \)
-    - Paper beats Rock: \( U_1U_0 = 01, C_1C_0 = 00 \) : \( W_2 = \overline{U_1} U_0 \overline{C_1} \overline{C_0} \)
-    - Scissors beat Paper: \( U_1U_0 = 10, C_1C_0 = 01 \) : \( W_3 = U_1 \overline{U_0} \overline{C_1} C_0 \)
-
-    The full expression for a win is:
-    \[ W = W_1 + W_2 + W_3 \]
-
-2. **User Loses** (Red LED): \( L \)
-    - The loss conditions are simply the inverses of the win conditions. We can use the NOT operation on the \( W \) bit for this.
 
 ### Circuit Components:
 
