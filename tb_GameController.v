@@ -30,21 +30,49 @@ module tb_GameController();
     end
 
     // Test sequence
-    initial begin
-        // Initialize signals
-        clock = 0;
-        reset_button = 0;
-        rock_button = 0;
-        paper_button = 0;
-        scissors_button = 0;
-        stop_signal = 0;
+	initial begin
+		$display("Start of testbench");
+		clock = 0;
+		reset_button = 0;
+		rock_button = 0;
+		paper_button = 0;
+		scissors_button = 0;
+		stop_signal = 0;
 
-        // Reset the game
-        reset_button = 1;
-        #10 reset_button = 0;
-        
-        // Test the game logic here
-        // E.g., press rock_button, then stop_signal, then observe win/lose LEDs
-    end
+		// Reset the game
+		reset_button = 1;
+		#10 reset_button = 0;
+		
+		// Scenario 1: Player chooses Rock
+		
+		$display("Scenario 1: Player chooses Rock");
+		rock_button = 1;
+		#10 stop_signal = 1; // Lock-in the choices
+		#10 stop_signal = 0;
+		#10 rock_button = 0;
+		
+		// Delay to observe behavior
+		#50;
+
+		// Scenario 2: Player chooses Paper
+		paper_button = 1;
+		#10 stop_signal = 1; // Lock-in the choices
+		#10 stop_signal = 0;
+		#10 paper_button = 0;
+		
+		// Delay to observe behavior
+		#50;
+
+		// Scenario 3: Player chooses Scissors
+		scissors_button = 1;
+		#10 stop_signal = 1; // Lock-in the choices
+		#10 stop_signal = 0;
+		#10 scissors_button = 0;
+
+		// Delay to observe behavior
+		#50;
+
+		$display("End of testbench");
+	end
 
 endmodule
