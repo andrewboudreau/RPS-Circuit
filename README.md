@@ -3,28 +3,7 @@ A rock paper scissor digital circuit
 
 https://chat.openai.com/share/e1661239-cbc7-4bde-933a-885e609e13d1
 
-### Symbolic Notation for Inputs and Outputs:
-
-- Player : User Choice (2 bits)
-- Computer : CPU Choice (2 bits)
-- W : Win LED (1 bit)
-- L : Loss LED (1 bit)
-
 ### Game Logic:
-
-Here are the game rules as Boolean expressions. We'll consider a Win or Loss from the perspective of the user.
-
-1. **User Wins** (Green LED): \( W \)
-    - Rock beats Scissors: 
-    - Paper beats Rock:
-    - Scissors beat Paper:
-
-    The full expression for a win is:
-    \[ W = W_1 + W_2 + W_3 \]
-
-2. **User Loses** (Red LED): \( L \)
-    - The loss conditions are simply the inverses of the win conditions. We can use the NOT operation on the \( W \) bit for this.
-
 # Truth Table for Rock-Paper-Scissors 🎮
 - **Rock 🪨**: 01
 - **Paper 📄**: 10
@@ -53,6 +32,26 @@ assign win = (player_choice == 2'b01 && computer_choice == 2'b11) ||  // Rock be
              (player_choice == 2'b11 && computer_choice == 2'b10);    // Scissors beats Paper
 ```
 
+Here are the game rules as Boolean expressions. We'll consider a Win or Loss from the perspective of the user.
+
+1. **User Wins** (Green LED): \( W \)
+    - Rock beats Scissors: 
+    - Paper beats Rock:
+    - Scissors beat Paper:
+
+    The full expression for a win is:
+    \[ W = W_1 + W_2 + W_3 \]
+
+2. **User Loses** (Red LED): \( L \)
+    - The loss conditions are simply the inverses of the win conditions. We can use the NOT operation on the \( W \) bit for this.
+
+### Symbolic Notation for Inputs and Outputs:
+
+- Player : User Choice (2 bits)
+- Computer : CPU Choice (2 bits)
+- W : Win LED (1 bit)
+- L : Loss LED (1 bit)
+
 ### Circuit Components:
 
 1. **User Input**: Three buttons connected to a 2-bit latch to store \( U_1U_0 \).
@@ -62,6 +61,7 @@ assign win = (player_choice == 2'b01 && computer_choice == 2'b11) ||  // Rock be
     - OR gate to sum up \( W_1, W_2, W_3 \) to get \( W \)
     - NOT gate to get \( L \) from \( W \)
 4. **Output**: Two LEDs connected to \( W \) and \( L \).
+
 
 ### Steps:
 
