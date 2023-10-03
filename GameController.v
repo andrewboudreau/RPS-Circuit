@@ -45,4 +45,4 @@ module GameController(
     assign win_led = player_win;
     assign lose_led = ~player_win & (player_choice != 2'b00);
 
-endmodul
+endmodule

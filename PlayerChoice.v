@@ -1,4 +1,3 @@
-// This module represents the player's choice in Rock-Paper-Scissors
 module PlayerChoice(
     input wire rock_button,    // Rock Button: Press to choose Rock
     input wire paper_button,   // Paper Button: Press to choose Paper
