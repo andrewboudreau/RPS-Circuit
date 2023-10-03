@@ -1,6 +1,32 @@
 # RPS-Circuit
 A rock paper scissor digital circuit
 
+# Build wtih Icarus Verilog
+Install Icarus Verilog: If you're using a Debian-based system like Ubuntu, you can install it using:
+```
+sudo apt-get install iverilog
+```
+
+Compile Your Code: Navigate to the folder containing your Verilog files and run:
+```
+iverilog -o rps_circuit GameController.v PlayerChoice.v ComputerChoice.v WinnerLogic.v tb_GameController.v
+```
+This compiles all your Verilog files and generates an output file named rps_circuit.
+
+Run the Simulation: To run the simulation, execute the output file using:
+```
+vvp rps_circuit
+```
+
+This will run the simulation and you should see any $display statements you've used in your testbench.
+
+View Waveforms (Optional): If you've used $dumpfile and $dumpvars in your testbench, you can use a waveform viewer like GTKWave to view the simulation results:
+
+```
+gtkwave my_waveform_file.vcd
+```
+
+
 https://chat.openai.com/share/e1661239-cbc7-4bde-933a-885e609e13d1
 
 ### Game Logic:
