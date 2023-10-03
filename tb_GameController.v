@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module tb_GameController
+module tb_GameController();
 
     reg clock;
     reg reset_button;

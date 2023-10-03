@@ -15,8 +15,8 @@ module GameController(
 );
 
     wire player_win;                 // Signal indicating the player's win
-    reg [1:0] player_choice;         // Player's choice
-    reg [1:0] computer_choice;       // Computer's choice
+    wire [1:0] player_choice;        // Player's choice
+    wire [1:0] computer_choice;      // Computer's choice
 
     // Instantiate PlayerChoice module
     PlayerChoice playerInst (
